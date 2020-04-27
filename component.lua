@@ -4,11 +4,13 @@ ComponentTypes = {"cpu", "gcard", "ram", "mobo", "ssd", "hdd", "psu", "case"}
 
 Component = Object:extend()
 
-function Component:new(name, cType, pricen, condition)
+function Component:new(name, cType, price, condition, takeGain, lifetime)
     self.name = name or ""
     self.cType = cType or ""
     self.price = price or 0
     self.condition = condition or "old"
+    self.takeGain = takeGain or "true"
+    self.lifetime = lifetime or ""
 end
 
 function Component:setPrice(price)
@@ -35,6 +37,14 @@ function Component:setCondition(condition)
     end
 end
 
+function Component:setTakeGain(takeGain)
+    self.takeGain = takeGain
+end
+
+function Component:setLifetime(lifetime)
+    self.lifetime = lifetime
+end
+
 function Component:getPrice()
     return self.price
 end
@@ -51,9 +61,19 @@ function Component:getCondition()
     return self.condition
 end
 
-function Component:__tostring()
-    return self.name .. " " .. self.cType .. " " .. self.price .. " " ..self.condition
+function Component:getTakeGain()
+    return self.takegain
 end
 
-local comp1 = Component("Ryzen 5 2600x", "cpu", "110", "old")
-print(comp1)
+function Component:getLifetime()
+    return self.lifetime
+end
+
+function Component:__tostring()
+    return self.name .. " " .. self.cType .. " " .. self.price .. " " ..self.condition .. " " .. tostring(self.takeGain) .. " " .. self.lifetime
+end
+
+return Component
+
+--local comp1 = Component("Ryzen 5 2600x", "cpu", "110", "old", true)
+--print(comp1)
