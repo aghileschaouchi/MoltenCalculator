@@ -1,1 +1,1 @@
-A gui application that help me calculate hardware component and computers pricesA gui application that help me calculate hardware component and computers prices
+A gui application that helps me calculating hardware components and computers prices.
